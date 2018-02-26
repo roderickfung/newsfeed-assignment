@@ -11,18 +11,12 @@ export const resetTerm = () => {
   }
 }
 
-export const setTerm = (keyword) => {
+export const searchNews = (keyword) => {
   return (dispatch) => {
     dispatch({
       type: SET_TERM,
       payload: keyword
     })
-  }
-}
-
-export const searchNews = () => {
-  return (dispatch, getState) => {
-    let keyword = getState().search.term;
     _query(dispatch, keyword)
   }
 }

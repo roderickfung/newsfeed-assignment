@@ -1,20 +1,24 @@
 import React from 'react';
 import './style.css';
 import { connect } from 'react-redux';
-import {
-  setTerm,
-  searchNews
-} from '../../actions'
+import { searchNews } from '../../actions'
 
 class SearchForm extends React.Component {
 
+  constructor() {
+    super()
+    this.state = {
+      term: ''
+    }
+  }
+
   submitSearch = (event) => {
-    this.props.searchNews();
+    this.props.searchNews(this.state.term);
     event.preventDefault();
   }
 
-  updateSearchTerm = (event) => {
-    this.props.setTerm(event.target.value);
+  updateSearchTerm = (e) => {
+    this.setState({term: e.target.value})
   }
 
   render() {
@@ -26,7 +30,7 @@ class SearchForm extends React.Component {
         <div className='search-container'>
           <input
             type='text'
-            value={this.props.term}
+            value={this.state.term}
             onChange={this.updateSearchTerm} />
         </div>
         <button onClick={this.submitSearch}>Find News</button>
@@ -43,6 +47,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  setTerm,
   searchNews
 })(SearchForm)
