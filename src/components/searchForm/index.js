@@ -33,7 +33,9 @@ class SearchForm extends React.Component {
             value={this.state.term}
             onChange={this.updateSearchTerm} />
         </div>
-        <button onClick={this.submitSearch}>Find News</button>
+        <button
+        onClick={this.submitSearch}
+        disabled={!this.state.term}>Find News</button>
       </div>
     )
   }

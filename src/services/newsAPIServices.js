@@ -4,5 +4,5 @@ import {
 
 export const getArticles = (keyword) => {
   return fetch(`
-https://newsapi.org/v2/top-headlines?q=${keyword}&apiKey=${API_KEY}`)
+https://newsapi.org/v2/everything?q=${keyword}&sortBy=popularity&apiKey=${API_KEY}`)
 }
